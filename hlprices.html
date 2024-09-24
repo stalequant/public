@@ -104,14 +104,6 @@
                     <td id="whalesStatus">Loading...</td>
                 </tr>
                 <tr>
-                    <td><span class="emoji">🔴</span><a href="https://hook.xyz/trade?orderType=MARKET&orderDirection=BUY&asset=HYPT&instrument=PERPETUAL" target="_blank">hook.xyz</a></td>
-                    <td>Market</td>
-                    <td id="hookBid" class="price-cell">-</td>
-                    <td>-</td>
-                    <td id="hookAsk" class="price-cell">-</td>
-                    <td id="hookStatus">Loading...</td>
-                </tr>
-                <tr>
                     <td><span class="emoji">🟢</span><a href="https://x.com/stevenyuntcap/status/1825928172065665310?t=4pWlevNQPZzZ50PO4ciYfA" target="_blank">steven.hl</a></td>
                     <td>Prediction</td>
                     <td class="price-cell" >$5.00</td>
@@ -228,12 +220,8 @@
 		    return response.json(); // Parse the JSON from the response
 		  })
 		  .then(data => {
-              	 	 document.getElementById('hypurr').textContent = `$${data['hf'].toFixed(2)}`;
-              	 	 document.getElementById('hookAsk').textContent = `$${data['hook'][0].toFixed(2)}`;
-              	 	 document.getElementById('hookBid').textContent = `$${data['hook'][1].toFixed(2)}`;
-	
-			document.getElementById('hypurrStatus').textContent = `${data['date']}`;
-			document.getElementById('hookStatus').textContent = `${data['date']}`;
+              	 	 document.getElementById('hypurr').textContent = `$${data['hf'].toFixed(2)}`; 
+			document.getElementById('hypurrStatus').textContent = `${data['date']}`; 
 
 		  })
 		  .catch(error => {
@@ -241,8 +229,7 @@
 		  });
 		
             } catch (error) {
-                console.error('Error fetching data:', error);
-                document.getElementById('hookPrice').textContent = 'Error';
+                console.error('Error fetching data:', error); 
                 document.getElementById('hookStatus').textContent = 'Failed';
             }
         }
