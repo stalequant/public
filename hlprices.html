@@ -161,8 +161,10 @@
 
         async function fetchBubblyData() {
             try {
-		
-                const response = await fetch('https://api.bubbly.finance/data/v1/42161/price?address=0x807125cD6599d1f7CA5529dB78951A2828E2A948');
+		const bubblyURL = 'https://api.bubbly.finance/data/v1/42161/price?address=0x807125cD6599d1f7CA5529dB78951A2828E2A948'
+		const url = 'https://corsproxy.io/?' + encodeURIComponent(bubblyURL);
+		    
+                const response = await fetch(url);
                 const data = await response.json();
                 const price = parseFloat(data.data.usdPrice);
                 
@@ -185,7 +187,11 @@
         async function fetchBubblyFallback() {
             try {
     
-	        const response = await fetch('https://api.bubbly.finance/data/v1/42161/0x3b89D63Eaac5df9956A053f200aec2c4a309FcE6/liquidity');
+		const bubblyURL = 'https://api.bubbly.finance/data/v1/42161/0x3b89D63Eaac5df9956A053f200aec2c4a309FcE6/liquidity'
+		const url = 'https://corsproxy.io/?' + encodeURIComponent(bubblyURL);
+		    
+                const response = await fetch(url);
+
                 const data = await response.json();
                 const balancedRange = data.data.tickRangeList.find(range => range.range === "Balanced");
                 if (balancedRange) {
